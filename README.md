@@ -36,6 +36,9 @@ $ npm install
 
 ## Running the app
 
+Make sure to have MongoDB running
+$ mongod
+
 ```bash
 # development
 $ npm run start
