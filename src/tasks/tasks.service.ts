@@ -1,10 +1,32 @@
 import { Injectable } from '@nestjs/common';
-
+import { InjectModel } from "@nestjs/mongoose"
+import { Model } from "mongoose"
 import { Task } from './interfaces/Task';
 
 @Injectable()
 export class TasksService {
-    tasks: Task[] = [
+    
+    constructor(@InjectModel("Task") private taskModel: Model<Task>) {}
+
+    async getTasks() {
+        return await this.taskModel.find();
+    }
+    
+    async getTask(id:string) {
+        return await this.taskModel.findById(id);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /* tasks: Task[] = [
         {
             id:1,
             title: "Testing",
@@ -31,6 +53,6 @@ export class TasksService {
 
     getTask(id: number): Task {
         return this.tasks.find(x => x.id === id)
-    }
+    } */
 
 }
